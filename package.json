@@ -4,12 +4,32 @@
   "scripts": {
     "start": "vite"
   },
-  "dependencies": { 
-    "normalize.css": "^8.0.1", 
-    "vue": "^3.5.13", 
-    "vue-router": "^4.5.0" 
+  "dependencies": {
+    "@codemirror/commands": "^6.8.0",
+    "@codemirror/lang-markdown": "^6.3.2",
+    "@codemirror/language": "^6.10.8",
+    "@codemirror/language-data": "^6.5.1",
+    "@codemirror/state": "^6.5.2",
+    "@codemirror/view": "^6.36.4",
+    "@lezer/highlight": "^1.2.1",
+    "@shikijs/transformers": "^3.1.0",
+    "markdown-it": "^14.1.0",
+    "markdown-it-async": "^2.2.0",
+    "markdown-it-attrs": "^4.3.1",
+    "markdown-it-container": "^4.0.0",
+    "markdown-it-footnote": "^4.0.0",
+    "markdown-it-mark": "^4.0.0",
+    "markdown-it-sub": "^2.0.0",
+    "markdown-it-sup": "^2.0.0",
+    "normalize.css": "^8.0.1",
+    "pinia": "^3.0.1",
+    "shiki": "^3.1.0",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
   },
   "devDependencies": {
+    "@types/markdown-it": "^14.1.2",
+    "@types/markdown-it-container": "^2.0.10",
     "@types/node": "^22.13.9",
     "@vitejs/plugin-vue": "^5.2.1",
     "typescript": "^5.8.2",

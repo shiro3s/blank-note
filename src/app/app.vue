@@ -5,3 +5,18 @@
     <router-view />
   </div>
 </template>
+
+<style>
+:root {
+  --sidebar-width: 180px;
+}
+
+html,
+body {
+  line-height: 1.5;
+}
+</style>
+
+<style scoped>
+
+</style>

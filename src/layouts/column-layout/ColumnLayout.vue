@@ -15,7 +15,7 @@ import ColumnLayoutSidebar from "./ColumnLayoutSidebar.vue"
 
 <style scoped>
 .column-layout__main {
-  padding-left: 48px;
+  padding-left: var(--sidebar-width);
 }
 
 .column-layout__section {

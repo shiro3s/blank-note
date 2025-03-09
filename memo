@@ -1,0 +1,8 @@
+
+| / | home |
+| /note | Note一覧 |
+| /note/new | Note作成 |
+| /note/trash | Note削除一覧 |
+| /note/edit/:id | Note編集 |
+| /note/:id | Note詳細 |
+| /note/help | Help |
