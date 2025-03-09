@@ -7,7 +7,7 @@ defineProps<Menu>();
 
 <template>
   <router-link :to="path" class="column-layout-sidebar-menu" active-class="active">
-    <VIcon :icon="icon" style="width: 32px; height: 32px; color: #606266;" />
+    <VIcon :icon="icon" />
     <span>{{ name }}</span>
   </router-link>
 </template>
@@ -17,13 +17,21 @@ defineProps<Menu>();
   display: flex;
   align-items: center;
   gap: 10px;
+  height: 40px;
   text-decoration: none;
   padding: 4px 0;
   border-radius: 6px;
+  box-sizing: border-box;
 }
 
 .column-layout-sidebar-menu:hover {
   background-color: #cccccc66;
+}
+
+.column-layout-sidebar-menu :deep(.v-icon) {
+  width: 24px;
+  height: 24px;
+  color: #606266;
 }
 
 .column-layout-sidebar-menu span {
