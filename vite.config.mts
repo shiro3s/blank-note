@@ -14,6 +14,9 @@ export default defineConfig(() => {
     },
     plugins: [
       vue()
-    ]
+    ],
+    optimizeDeps: {
+      exclude: ["@electric-sql/pglite"]
+    }
   }
 });

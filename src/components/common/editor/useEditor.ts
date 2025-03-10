@@ -21,8 +21,6 @@ import { customKeymap } from "./keymap";
 
 import { highlight } from "./highlight";
 import { theme } from "./theme";
-import { handleDrop } from "./drop";
-import { handlePaste } from "./paste";
 
 export interface Props {
 	modelValue?: string;
@@ -83,14 +81,6 @@ export const useEditor = (props: Props, emits: Emits) => {
 				codeLanguages: languages,
 			}),
 			EditorView.lineWrapping,
-			EditorView.domEventHandlers({
-				drop: (event, view) => {
-					handleDrop({ event, view, uploader: props.uploader });
-				},
-				paste: (event, view) => {
-					handlePaste({ event, view, uploader: props.uploader });
-				},
-			}),
 			// NOTE: https://discuss.codemirror.net/t/listen-to-change-event/5095
 			EditorView.updateListener.of((update) => {
 				editor.value = update.view

@@ -8,7 +8,6 @@ import mdItAsync from "markdown-it-async";
 
 import { container } from "./container";
 import { link } from "./link";
-import { embed } from "./embed";
 import {customHighlight} from "./highlight"
 
 export interface Props {
@@ -38,7 +37,6 @@ export const useMarkdown = (props: Props) => {
 		.use(container, "danger")
 		.use(container, "details")
 		.use(link)
-		.use(embed)
 
 	const compileMarkdown = computed(() => {
 		return textRef.value;

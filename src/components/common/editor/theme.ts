@@ -2,7 +2,7 @@ import { EditorView } from "@codemirror/view";
 
 export const theme = EditorView.theme({
 	"&": {
-		"min-height": "460px",
+		"min-height": "65svh",
 	},
 	"&.cm-editor": {
 		outline: "none",

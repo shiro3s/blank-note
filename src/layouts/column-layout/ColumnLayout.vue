@@ -19,7 +19,7 @@ import ColumnLayoutSidebar from "./ColumnLayoutSidebar.vue"
 }
 
 .column-layout__section {
-  padding: 2rem;
+  padding: 2rem 12px;
   max-width: 1280px;
   margin: 0 auto;
 }

@@ -6,7 +6,7 @@ defineProps<Menu>();
 </script>
 
 <template>
-  <router-link :to="path" class="column-layout-sidebar-menu" active-class="active">
+  <router-link :to="path" class="column-layout-sidebar-menu" exact-active-class="active">
     <VIcon :icon="icon" />
     <span>{{ name }}</span>
   </router-link>

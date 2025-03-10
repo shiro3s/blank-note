@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import {usePgClient} from "@/composables/usePgClient"
+
+usePgClient()
+</script>
 
 <template>
   <div class="app">

@@ -11,14 +11,18 @@ export const routes: RouteRecordRaw[] = [
 		component: () => import("@/layouts/column-layout/ColumnLayout.vue"),
 		children: [
 			{
-				"path": "",
-				component: () => import("@/pages/note/NotePage.vue")
-			}
-		]
+				path: "",
+				component: () => import("@/pages/note/NotePage.vue"),
+			},
+			{
+				path: "new",
+				component: () => import("@/pages/new-note/NewNotePage.vue"),
+			},
+		],
 	},
 	{
 		path: "/:anymatch(.*)",
 		name: "NotFound",
-		component: () => import("@/pages/not-found/NotFoundPage.vue")
-	}
+		component: () => import("@/pages/not-found/NotFoundPage.vue"),
+	},
 ];
