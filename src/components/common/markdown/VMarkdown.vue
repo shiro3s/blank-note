@@ -5,11 +5,12 @@ const props = withDefaults(defineProps<Props>(), {
 	text: "",
 });
 
-const { compileMarkdown } = useMarkdown(props);
+const { compileMarkdown, containerElmRef } = useMarkdown(props);
 </script>
 
 <template>
-  <div 
+  <div
+    ref="containerElmRef"
     class="v-markdown" 
     v-html="compileMarkdown"
   />
@@ -93,9 +94,10 @@ const { compileMarkdown } = useMarkdown(props);
   margin-bottom: 16px;
 }
 
-.v-markdown :deep(.code-block-title span) {
+.v-markdown :deep(.code-block__title span) {
   display: inline-block;
   padding: 4px 20px;
+  font-size: 12px;
   background-color: color-mix(in srgb, #272822, #fff 15%);
   color: #fff;
   border-top-left-radius: 4px;
@@ -118,6 +120,57 @@ const { compileMarkdown } = useMarkdown(props);
 
 .v-markdown :deep(.code-block pre) {
   border-top-left-radius: 0;
+}
+
+.v-markdown :deep(.code-block__content) {
+  position: relative;
+}
+
+.v-markdown :deep(.code-block__clipboard-btn) {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  gap: 5px;
+  top: 0;
+  right: 0;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+  opacity: 0;
+  cursor: pointer;
+  background-color: #353531;
+  border-bottom-left-radius: 4px;
+  transition: opacity 0.6s ease;
+}
+
+.v-markdown :deep(.code-block__clipboard-btn:is(.copied)) {
+  opacity: 1
+}
+
+.v-markdown :deep(.code-block__clipboard-btn:is(.copied)::before) {
+  content: "copied!";
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.v-markdown :deep(.code-block__content:hover .code-block__clipboard-btn) {
+  opacity: 1;
+}
+
+.v-markdown :deep(.code-block__icon) {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1em;
+  width: 1.5em;
+  height: 1.5em;
+  pointer-events: none;
+}
+
+.v-markdown :deep(.code-block__icon svg) {
+  pointer-events: none;
 }
 
 .v-markdown :deep(pre code) {

@@ -1,6 +1,7 @@
 import path from "node:path";
 import {defineConfig} from "vite";
 import vue from "@vitejs/plugin-vue"
+import basicSsl from "@vitejs/plugin-basic-ssl";
 
 export default defineConfig(() => {
   return {
@@ -13,7 +14,8 @@ export default defineConfig(() => {
       }
     },
     plugins: [
-      vue()
+      vue(),
+      basicSsl()
     ],
     optimizeDeps: {
       exclude: ["@electric-sql/pglite"]
