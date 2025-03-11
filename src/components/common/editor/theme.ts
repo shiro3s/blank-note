@@ -6,7 +6,7 @@ export const theme = EditorView.theme({
 	},
 	"&.cm-editor": {
 		outline: "none",
-		padding: "16px",
+		padding: "16px 0",
 		"box-sizing": "border-box",
 		"font-size": "16px",
 		"line-height": "1.5",

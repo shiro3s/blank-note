@@ -19,7 +19,7 @@ const { compileMarkdown } = useMarkdown(props);
 .v-markdown {
   padding: 16px 0;
   box-sizing: border-box;
-  min-height: 460px;
+  min-height: 65svh;
 }
 
 .v-markdown :deep(*) {

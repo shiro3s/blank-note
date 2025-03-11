@@ -12,6 +12,7 @@ usePgClient()
 
 <style>
 :root {
+  --error: #e5534b;
   --sidebar-width: 180px;
 }
 
