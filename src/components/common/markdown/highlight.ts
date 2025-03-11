@@ -12,13 +12,17 @@ export const customHighlight = async (
 	const language = lang ?? "text";
 	const fileName = attrs.split(":")[1];
 
-	const highlightContent = await codeToHtml(code, {
-		lang: language,
-		theme: "monokai",
-		transformers: [transformerNotationDiff(), transformerNotationFocus()],
-	});
+	try {
+		const highlightContent = await codeToHtml(code, {
+			lang: language,
+			theme: "monokai",
+			transformers: [transformerNotationDiff(), transformerNotationFocus()],
+		});
 
-	if (!fileName) return highlightContent;
+		if (!fileName) return highlightContent;
 
-	return `<div class="code-block"><div class="code-block-title"><span>${fileName}</span></div>${highlightContent}</div>`;
+		return `<div class="code-block"><div class="code-block-title"><span>${fileName}</span></div>${highlightContent}</div>`;
+	} catch {
+		return `<pre class="shiki monokai" style="background-color:#272822;color:#F8F8F2;"><code>${code}</code></pre>`;
+	}
 };
