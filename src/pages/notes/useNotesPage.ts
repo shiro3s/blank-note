@@ -2,7 +2,7 @@ import { inject, onMounted, ref } from "vue";
 import { PgInjectKey } from "@/composables/usePgClient";
 import type { Note } from "@/types/apps";
 
-export const useNotePage = () => {
+export const useNotesPage = () => {
 	const notes = ref<Note[]>([]);
 	const pg = inject(PgInjectKey);
 

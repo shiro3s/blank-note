@@ -15,6 +15,7 @@ provide(PgInjectKey, usePgClient());
 :root {
   --error: #e5534b;
   --sidebar-width: 180px;
+  --desktop: 1136px;
 }
 
 html,

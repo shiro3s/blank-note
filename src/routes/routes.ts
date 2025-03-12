@@ -18,6 +18,10 @@ export const routes: RouteRecordRaw[] = [
 				path: "new",
 				component: () => import("@/pages/new-note/NewNotePage.vue"),
 			},
+			{
+				path: ":id",
+				component: () => import("@/pages/note/NotePage.vue")
+			}
 		],
 	},
 	{

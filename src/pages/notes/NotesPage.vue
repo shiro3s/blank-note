@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useNotePage } from "./useNotesPage";
+import { useNotesPage } from "./useNotesPage";
 import NoteCard from "@/components/feature/note-card/NoteCard.vue";
 
-const { notes } = useNotePage();
+const { notes } = useNotesPage();
 </script>
 
 <template>
@@ -25,6 +25,14 @@ const { notes } = useNotePage();
 .note-page__items {
   display: grid;
   gap: 16px;
-  grid-template-columns: repeat(auto-fill, minmax(auto, 300px));
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
+
+  @media screen and (max-width: 1136px) {
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+  }
+
+  @media screen and (max-width: 820px) {
+    grid-template-columns: none;
+  }
 }
 </style>
