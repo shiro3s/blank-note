@@ -12,7 +12,7 @@ export const routes: RouteRecordRaw[] = [
 		children: [
 			{
 				path: "",
-				component: () => import("@/pages/note/NotePage.vue"),
+				component: () => import("@/pages/notes/NotesPage.vue"),
 			},
 			{
 				path: "new",
