@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import VBtn from "@/components/common/btn/VBtn.vue";
 import VEditor from "@/components/common/editor/VEditor.vue";
 import VSwitch from "@/components/common/switch/VSwitch.vue";

@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import {usePgClient} from "@/composables/usePgClient"
+import { provide } from "vue";
+import { usePgClient, PgInjectKey } from "@/composables/usePgClient";
 
-usePgClient()
+provide(PgInjectKey, usePgClient());
 </script>
 
 <template>

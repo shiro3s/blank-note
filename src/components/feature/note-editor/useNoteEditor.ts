@@ -3,7 +3,7 @@ import { useForm } from "vee-validate";
 import { toTypedSchema } from "@vee-validate/valibot";
 import { object, string, pipe, nonEmpty, optional, required } from "valibot";
 
-type NoteValue = {
+export type NoteValue = {
 	title: string;
 	content?: string;
 };
@@ -33,7 +33,6 @@ export const useNoteEditor = (emits: Emits) => {
 	const [content] = defineField("content");
 
 	const onSubmit = handleSubmit((values) => {
-		console.log(values);
 		emits("submit", values);
 	});
 

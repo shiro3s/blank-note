@@ -1,6 +1,6 @@
-import { onMounted } from "vue";
+import { type InjectionKey, onMounted } from "vue";
 import { PGliteWorker } from "@electric-sql/pglite/worker";
-import { createTableNotes } from "./init-sql";
+import { createTableNotes } from "@/constants/sql";
 
 export const usePgClient = () => {
 	const pg = new PGliteWorker(
@@ -12,4 +12,9 @@ export const usePgClient = () => {
 	onMounted(async () => {
 		await pg.exec(createTableNotes);
 	});
+
+	return pg;
 };
+
+export type PgContext = ReturnType<typeof usePgClient>;
+export const PgInjectKey: InjectionKey<PgContext> = Symbol("pg");

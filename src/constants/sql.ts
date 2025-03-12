@@ -8,3 +8,6 @@ export const createTableNotes = `
     updatedAt VARCHAR(20)
   );
 `;
+
+export const insertNote =
+	"INSERT INTO t_notes (id, title, content, createdAt) VALUES ($1, $2, $3, $4)";
