@@ -2,8 +2,9 @@
 import { useNotesPage } from "./useNotesPage";
 import NoteCard from "@/components/feature/note-card/NoteCard.vue";
 import NoteCardMenus from "@/components/feature/note-card-menu/NoteCardMenus.vue";
+import VPagination from "@/components/common/pagination/VPagination.vue";
 
-const { notes, handleTrash } = useNotesPage();
+const { notes, count, currentPage, handleTrash } = useNotesPage();
 </script>
 
 <template>
@@ -28,6 +29,14 @@ const { notes, handleTrash } = useNotesPage();
         </template>
       </NoteCard>
     </div>
+
+    <div class="note-page__footer">
+      <VPagination 
+        :total-count="count" 
+        :pager-count="4" 
+        :current-page="currentPage" 
+      />
+    </div>
   </div>
 </template>
 
@@ -44,5 +53,9 @@ const { notes, handleTrash } = useNotesPage();
   @media screen and (max-width: 820px) {
     grid-template-columns: minmax(248px, 1fr);
   }
+}
+
+.note-page__footer {
+  margin-top: 40px;
 }
 </style>

@@ -5,6 +5,7 @@ import { live } from "@electric-sql/pglite/live";
 worker({
 	async init() {
 		return new PGlite("idb://proto-note", {
+			relaxedDurability: true,
 			extensions: {
 				live,
 			},

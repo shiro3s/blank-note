@@ -4,8 +4,8 @@ export const createTableNotes = `
     title VARCHAR(30) DEFAULT '',
     content TEXT DEFAULT '',
     isDeleted BOOLEAN DEFAULT false,
-    createdAt VARCHAR(20),
-    updatedAt VARCHAR(20)
+    createdAt VARCHAR(20) DEFAULT '',
+    updatedAt VARCHAR(20) DEFAULT ''
   );
 `;
 
