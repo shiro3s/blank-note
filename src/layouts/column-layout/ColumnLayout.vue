@@ -16,6 +16,10 @@ import ColumnLayoutSidebar from "./ColumnLayoutSidebar.vue"
 <style scoped>
 .column-layout__main {
   padding-left: var(--sidebar-width);
+  
+  @media screen and (max-width: 820px) {
+    padding-left: var(--sidebar-min-width);
+  }
 }
 
 .column-layout__section {

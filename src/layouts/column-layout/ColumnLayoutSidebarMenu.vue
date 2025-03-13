@@ -19,7 +19,7 @@ defineProps<Menu>();
   gap: 10px;
   height: 40px;
   text-decoration: none;
-  padding: 4px 0;
+  padding: 4px 4px;
   border-radius: 6px;
   box-sizing: border-box;
 }
@@ -38,10 +38,15 @@ defineProps<Menu>();
   color: #606266;
   font-size: 16px;
   font-weight: 500;
+
+  @media screen and (max-width: 820px) {
+    display: none;
+  }
 }
 
 
-.column-layout-sidebar-menu:is(.active) span {
+.column-layout-sidebar-menu:is(.active) span,
+.column-layout-sidebar-menu:is(.active) :deep(.v-icon) {
   color: #42b883 !important;
 }
 </style>

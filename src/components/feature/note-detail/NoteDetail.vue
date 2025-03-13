@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type {Note} from "@/types/apps";
 import VMarkdown from "@/components/common/markdown/VMarkdown.vue";
+import { format } from "@/utils/date";
 
 type Props = Omit<Note, "id" | "isdeleted">;
 defineProps<Props>()
@@ -9,7 +10,14 @@ defineProps<Props>()
 <template>
   <div class="note-detail">
     <div class="note-detail__card">
-      <h1 class="note-detail__title">{{ title }}</h1>
+      <div class="note-detail__head">
+        <h1 class="note-detail__title">{{ title }}</h1>
+
+        <div class="note-detail__date">
+          <div>Creation Date: {{ format(createdat) }}</div>
+          <div>Update Date: {{ format(updatedat) }}</div>
+        </div>
+      </div>
       <VMarkdown :text="content || ''" />
     </div>
 
@@ -31,9 +39,15 @@ defineProps<Props>()
   border-radius: 12px;
 }
 
+.note-detail__date {
+  font-size: 12px;
+  color: #606266;
+  text-align: right;
+}
+
 .note-detail__title {
   font-size: 24px;
-  margin: 0 0 20px;
+  margin: 0;
   color: #606266;
 }
 </style>

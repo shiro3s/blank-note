@@ -29,7 +29,7 @@ const { compileMarkdown, containerElmRef } = useMarkdown(props);
   font-size: 16px;
   line-height: 1.5;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 820px) {
     font-size: 14px
   }
 }

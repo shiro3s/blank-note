@@ -19,8 +19,13 @@ export const routes: RouteRecordRaw[] = [
 				component: () => import("@/pages/new-note/NewNotePage.vue"),
 			},
 			{
+				path: "trash",
+				component: () => import("@/pages/trash-notes/TrashNotesPage.vue")
+			},
+			{
 				path: ":id",
-				component: () => import("@/pages/note/NotePage.vue")
+				component: () => import("@/pages/note/NotePage.vue"),
+				strict: true
 			}
 		],
 	},

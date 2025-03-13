@@ -27,6 +27,10 @@ import CalumnLayoutCapacity from "./CalumnLayoutCapacity.vue";
   background-color: #f4f4f4;
   border-right: 1px solid #ddd;
   padding: 32px 8px;
+
+  @media screen and (max-width: 820px) {
+    width: var(--sidebar-min-width);
+  }
 }
 
 .column-layout-sidebar__list {

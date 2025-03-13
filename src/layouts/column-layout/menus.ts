@@ -1,4 +1,4 @@
-import type { Icon } from "@/components/micro/icon/VIcon.vue";
+import type { Icon } from "@/components/micro/icon/type"
 
 export interface Menu {
 	icon: Icon;

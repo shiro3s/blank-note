@@ -2,16 +2,19 @@
 import type { Note } from "@/types/apps";
 import {format} from "@/utils/date"
 
-type Props = Omit<Note, "isdeleted">;
+type Props = Omit<Note, "isdeleted">
 defineProps<Props>();
 </script>
 
 <template>
-  <RouterLink :to="`/notes/${id}`" class="note-card">
+  <div class="note-card">
+    <RouterLink :to="`/notes/${id}`" class="note-card__link" />
     <div class="note-card__header">
       <h2 class="note-card__title">
         {{ title }}
       </h2>
+
+      <slot name="menu" />
     </div>
 
     <div class="note-card__body">
@@ -21,12 +24,12 @@ defineProps<Props>();
     <div class="note-card__footer">
       <div class="note-card__date">{{ format(updatedat || createdat) }}</div>
     </div>
-  </RouterLink>
+  </div>
 </template>
 
 <style scoped>
 .note-card {
-  display: block;
+  position: relative;
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 1rem;
@@ -39,8 +42,20 @@ defineProps<Props>();
   box-shadow: 0 0 10px #ddd;
 }
 
-.note-card__title {
+.note-card__link {
+  position: absolute;
+  inset: 0;
+}
+
+.note-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin: 0 0 1rem;
+}
+
+.note-card__title {
+  margin: 0;
   font-size: 24px;
   color: #606266;
 }

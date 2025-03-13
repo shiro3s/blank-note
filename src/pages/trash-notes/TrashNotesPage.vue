@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { useNotesPage } from "./useNotesPage";
+import { useTrashNotesPage } from "./useTrashNotesPage";
 import NoteCard from "@/components/feature/note-card/NoteCard.vue";
 import NoteCardMenus from "@/components/feature/note-card-menu/NoteCardMenus.vue";
 
-const { notes, handleTrash } = useNotesPage();
+const { notes } = useTrashNotesPage();
 </script>
 
 <template>
-  <div class="note-page">
-    <div class="note-page__items">
+  <div class="trash-note-page">
+    <div class="trash-note-page__items">
       <NoteCard 
         v-for="note in notes" 
         :key="note.id"
@@ -21,8 +21,8 @@ const { notes, handleTrash } = useNotesPage();
         <template #menu>
           <NoteCardMenus 
             :menus="[
-              {label: 'Edit', type: 'link', path: `/note/edit/${note.id}`},
-              {label: 'Trash', type: 'button', action: () => handleTrash(note.id)}
+              {label: 'Restore', type: 'button'},
+              {label: 'Delete', type: 'button'}
             ]"
           />
         </template>
@@ -32,7 +32,7 @@ const { notes, handleTrash } = useNotesPage();
 </template>
 
 <style scoped>
-.note-page__items {
+.trash-note-page__items {
   display: grid;
   gap: 16px;
   grid-template-columns: repeat(3, minmax(300px, 1fr));

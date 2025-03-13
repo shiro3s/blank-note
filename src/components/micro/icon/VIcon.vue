@@ -1,19 +1,22 @@
 <script setup lang="ts">
 import { defineAsyncComponent } from "vue";
-
-export type Icon = "Add" | "Copy" | "List" | "NoteStack" | "Trash";
+import type {Icon} from "./type"
 
 const props = defineProps<{ icon: Icon }>();
 const dynamicIcon = defineAsyncComponent(() => {
 	switch (props.icon) {
 		case "Add":
 			return import("./Add.vue");
-    case "Copy":
-      return import("./Copy.vue");
+		case "Copy":
+			return import("./Copy.vue");
 		case "List":
 			return import("./List.vue");
+		case "MoreVert":
+			return import("./MoreVert.vue");
 		case "NoteStack":
 			return import("./NoteStack.vue");
+		case "Storage":
+			return import("./Storage.vue");
 		case "Trash":
 			return import("./Trash.vue");
 	}
