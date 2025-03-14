@@ -49,8 +49,10 @@ export const useTrashNotesPage = () => {
 	};
 
 	const deleteNote = async (id: string) => {
-		await pg?.query("DELETE FROM t_notes WHERE id = $1", [id]);
-
+		await pg?.query(
+			"DELETE FROM t_notes WHERE id = $1", 
+			[id]
+		);
 		await Promise.all([search(), getCount()]);
 	};
 

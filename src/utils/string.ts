@@ -6,3 +6,10 @@ export const strToNum = (str?: string) => {
 
 	return num;
 };
+
+export const getBite = (str?: string) => {
+	if (!str) return 0;
+
+	const blob = new Blob([str], { type: "text/plain" });
+	return blob.size;
+};

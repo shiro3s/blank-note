@@ -40,7 +40,7 @@ export const useNotesPage = () => {
 	const handleTrash = async (id: string) => {
 		await pg?.query(
 			"UPDATE t_notes SET isDeleted = $1, updatedAt = $2 WHERE id = $3",
-			[false, now(), id],
+			[true, now(), id],
 		);
 		await Promise.all([
 			search(), 
