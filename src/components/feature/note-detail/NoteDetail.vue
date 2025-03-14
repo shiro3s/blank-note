@@ -14,8 +14,8 @@ defineProps<Props>()
         <h1 class="note-detail__title">{{ title }}</h1>
 
         <div class="note-detail__date">
-          <div>Creation Date: {{ format(createdat) }}</div>
-          <div>Update Date: {{ format(updatedat) }}</div>
+          <div v-if="createdat">Creation Date: {{ format(createdat) }}</div>
+          <div v-if="updatedat">Update Date: {{ format(updatedat) }}</div>
         </div>
       </div>
       <VMarkdown :text="content || ''" />

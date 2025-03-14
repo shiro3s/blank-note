@@ -22,7 +22,7 @@ const { notes, count, currentPage, handleTrash } = useNotesPage();
         <template #menu>
           <NoteCardMenus 
             :menus="[
-              {label: 'Edit', type: 'link', path: `/note/edit/${note.id}`},
+              {label: 'Edit', type: 'link', path: `/notes/edit/${note.id}`},
               {label: 'Trash', type: 'button', action: () => handleTrash(note.id)}
             ]"
           />

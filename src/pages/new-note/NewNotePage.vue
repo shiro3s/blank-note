@@ -6,7 +6,10 @@ const {handleSubmit} = useNewNotePage()
 </script>
 
 <template>
-  <NoteEditor @submit="handleSubmit" />
+  <NoteEditor 
+    @submit="handleSubmit"
+    label="Create note"
+  />
 </template>
 
 <style scoped>

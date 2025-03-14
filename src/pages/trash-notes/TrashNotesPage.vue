@@ -3,7 +3,7 @@ import { useTrashNotesPage } from "./useTrashNotesPage";
 import NoteCard from "@/components/feature/note-card/NoteCard.vue";
 import NoteCardMenus from "@/components/feature/note-card-menu/NoteCardMenus.vue";
 
-const { notes, count, currentPage } = useTrashNotesPage();
+const { notes, count, currentPage, restoreNote } = useTrashNotesPage();
 </script>
 
 <template>
@@ -21,7 +21,7 @@ const { notes, count, currentPage } = useTrashNotesPage();
         <template #menu>
           <NoteCardMenus 
             :menus="[
-              {label: 'Restore', type: 'button'},
+              {label: 'Restore', type: 'button', action: () => restoreNote(note.id)},
               {label: 'Delete', type: 'button'}
             ]"
           />

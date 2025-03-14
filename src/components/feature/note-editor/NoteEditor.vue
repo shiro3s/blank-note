@@ -5,15 +5,22 @@ import VSwitch from "@/components/common/switch/VSwitch.vue";
 import VTextInput from "@/components/common/text-input/VTextInput.vue";
 import VMarkdown from "@/components/common/markdown/VMarkdown.vue";
 
-import { useNoteEditor, type EmitType } from "./useNoteEditor";
+import { useNoteEditor, type EmitType, type Props } from "./useNoteEditor";
 
+const props = withDefaults(defineProps<Partial<Props>>(), {
+	title: "",
+	content: "",
+	preview: false,
+});
 const emits = defineEmits<EmitType>();
-const { content, title, preview, isSubmitting, errors, onSubmit } = useNoteEditor(emits);
+const { content, title, preview, isSubmitting, errors, onSubmit, setState } =
+	useNoteEditor(props, emits);
 
 defineExpose({
 	preview,
 	content,
 	title,
+	setState,
 });
 </script>
 
@@ -51,7 +58,7 @@ defineExpose({
     <div class="note-editor__sticky-top">
       <div class="note-editor__sticky-content">
         <VSwitch label="Preview" v-model="preview" />
-        <VBtn :disabled="isSubmitting">Create Note</VBtn>
+        <VBtn :disabled="isSubmitting">{{ label }}</VBtn>
       </div>
     </div>
   </form>
