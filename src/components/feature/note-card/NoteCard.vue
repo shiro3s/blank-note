@@ -58,6 +58,9 @@ defineProps<Props>();
   margin: 0;
   font-size: 24px;
   color: #606266;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .note-card__body {

@@ -33,6 +33,7 @@ defineExpose({
           fluid
           borderless
           v-model="title"
+          :maxlength="30"
         />
         <div 
           v-if="errors.title" 
@@ -88,6 +89,7 @@ defineExpose({
   box-sizing: border-box;
   border: 1px solid #ddd;
   border-radius: 12px;
+  min-height: 1056px;
 }
 
 .note-editor__divide {
