@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import NoteEmpty from "@/components/feature/note-empty/NoteEmpty.vue";
 import NoteEditor from "@/components/feature/note-editor/NoteEditor.vue";
 import { useEditNotePage } from "./useEditNotePage";
 
@@ -9,7 +10,7 @@ const { handleSubmit, state, note } = useEditNotePage();
   <div v-if="state.loading"></div>
 
   <div v-else>
-    <div v-if="state.error">404</div>
+    <NoteEmpty v-if="state.error" />
     <NoteEditor
       v-else
       preview

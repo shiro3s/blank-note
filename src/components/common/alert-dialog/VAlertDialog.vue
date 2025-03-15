@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue";
+import VBtn from "@/components/common/btn/VBtn.vue"
 
 interface Props {
 	title?: string;
@@ -45,12 +46,13 @@ defineExpose({
     <div class="v-alert-dialog__body" v-html="state.message" />
 
     <div class="v-alert-dialog__footer">
-      <button 
+      <VBtn 
         type="button" 
+        theme="success"
         @click="closeDialog"
       >
         OK
-      </button>
+      </VBtn>
     </div>
   </dialog>
 </template>
@@ -79,25 +81,5 @@ defineExpose({
   display: flex;
   justify-content: flex-end;
   margin-top: 16px;
-}
-
-.v-alert-dialog__footer button {
-  color: #606266;
-  outline: none;
-  background-color: #f6f8fa;
-  border: 1px solid #d1d9e0;
-  border-radius: 4px;
-  padding: 4px 12px;
-  font-size: 14px;
-  cursor: pointer;
-  box-sizing: border-box;
-}
-
-.v-alert-dialog__footer button:hover {
-  background-color: #eff2f5;
-}
-
-.v-alert-dialog__footer button:active {
-  background-color: #e6eaef;
 }
 </style>

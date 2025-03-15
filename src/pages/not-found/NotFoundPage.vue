@@ -1,5 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import NoteEmpty from '@/components/feature/note-empty/NoteEmpty.vue';
+</script>
 
 <template>
-  not found
+  <NoteEmpty />
 </template>

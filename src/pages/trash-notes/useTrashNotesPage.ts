@@ -14,6 +14,19 @@ type LocationQuery = {
 
 export const useTrashNotesPage = () => {
 	const notes = ref<Note[]>([]);
+	const dialog = ref<{
+		openDialog: ({
+			title,
+			message,
+			onSuccess,
+		}: {
+			title?: string;
+			message?: string;
+			onSuccess?: () => void;
+		}) => void;
+		closeDialog: () => void;
+	}>();
+
 	const count = ref(0);
 	const pg = inject(PgInjectKey);
 	const route: {
@@ -48,11 +61,20 @@ export const useTrashNotesPage = () => {
 		await Promise.all([search(), getCount()]);
 	};
 
+	const handleOpenDialog = (id: string) => {
+		dialog.value?.openDialog({
+			title: "Would you like to delete note?",
+			message:
+				"Deleted notes cannot be restored.<br />Would you like to delete it?",
+			onSuccess: async () => {
+				await deleteNote(id);
+				dialog.value?.closeDialog();
+			},
+		});
+	};
+
 	const deleteNote = async (id: string) => {
-		await pg?.query(
-			"DELETE FROM t_notes WHERE id = $1", 
-			[id]
-		);
+		await pg?.query("DELETE FROM t_notes WHERE id = $1", [id]);
 		await Promise.all([search(), getCount()]);
 	};
 
@@ -69,5 +91,5 @@ export const useTrashNotesPage = () => {
 		await Promise.all([search(), getCount()]);
 	});
 
-	return { notes, count, currentPage, restoreNote, deleteNote };
+	return { notes, count, currentPage, dialog, restoreNote, handleOpenDialog };
 };

@@ -2,8 +2,10 @@
 import { useTrashNotesPage } from "./useTrashNotesPage";
 import NoteCard from "@/components/feature/note-card/NoteCard.vue";
 import NoteCardMenus from "@/components/feature/note-card-menu/NoteCardMenus.vue";
+import VConfirmDialog from "@/components/common/confirm-dialog/VConfirmDialog.vue";
 
-const { notes, count, currentPage, restoreNote } = useTrashNotesPage();
+const { notes, count, currentPage, dialog, restoreNote, handleOpenDialog } =
+	useTrashNotesPage();
 </script>
 
 <template>
@@ -22,7 +24,7 @@ const { notes, count, currentPage, restoreNote } = useTrashNotesPage();
           <NoteCardMenus 
             :menus="[
               {label: 'Restore', type: 'button', action: () => restoreNote(note.id)},
-              {label: 'Delete', type: 'button'}
+              {label: 'Delete', type: 'button', action: () => handleOpenDialog(note.id)}
             ]"
           />
         </template>
@@ -37,6 +39,8 @@ const { notes, count, currentPage, restoreNote } = useTrashNotesPage();
       />
     </div>
   </div>
+
+  <VConfirmDialog ref="dialog" />
 </template>
 
 <style scoped>

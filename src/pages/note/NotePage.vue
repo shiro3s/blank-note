@@ -1,19 +1,21 @@
 <script setup lang="ts">
 import { useNotePage } from "./useNotePage";
-// import VMarkdown from "@/components/common/markdown/VMarkdown.vue";
+
+import NoteEmpty from "@/components/feature/note-empty/NoteEmpty.vue"
 import NoteDetail from "@/components/feature/note-detail/NoteDetail.vue";
 
-const { note, loading } = useNotePage();
+const { note, state } = useNotePage();
 console.log(note.value?.content);
 </script>
 
 <template>
   <div class="note-page">
-    <div class="" v-if="loading"></div>
+    <div class="" v-if="state.loading"></div>
 
     <div class="" v-else>
+      <NoteEmpty v-if="state.error || !note" />
       <NoteDetail
-        v-if="note"
+        v-else
         :title="note.title"
         :content="note.content"
         :createdat="note.createdat"
