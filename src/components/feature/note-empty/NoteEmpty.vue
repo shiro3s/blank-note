@@ -10,7 +10,7 @@
 
 <style scoped>
 .note-empty {
-  padding-top: 15vh;
+  padding-top: 10vh;
   max-width: 816px;
   margin: 0 auto;
 }

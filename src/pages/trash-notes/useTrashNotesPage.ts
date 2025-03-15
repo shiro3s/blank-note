@@ -1,4 +1,4 @@
-import { inject, onMounted, ref, computed, watch } from "vue";
+import { inject, onMounted, ref, computed, watch, reactive } from "vue";
 import { useRoute } from "vue-router";
 
 import { PgInjectKey } from "@/composables/usePgClient";
@@ -14,6 +14,9 @@ type LocationQuery = {
 
 export const useTrashNotesPage = () => {
 	const notes = ref<Note[]>([]);
+	const state = reactive({
+		loading: true,
+	})
 	const dialog = ref<{
 		openDialog: ({
 			title,
@@ -37,9 +40,9 @@ export const useTrashNotesPage = () => {
 
 	const getCount = async () => {
 		const ret = await pg?.query<{ count: number }>(
-			"SELECT count(*) FROM t_notes WHERE isDeleted = false",
+			"SELECT count(*) FROM t_notes WHERE isDeleted = true",
 		);
-		if (ret?.rows) count.value = ret.rows[0].count;
+		if (ret?.rows.length) count.value = ret.rows[0].count;
 	};
 
 	const search = async () => {
@@ -89,7 +92,8 @@ export const useTrashNotesPage = () => {
 
 	onMounted(async () => {
 		await Promise.all([search(), getCount()]);
+		state.loading = false
 	});
 
-	return { notes, count, currentPage, dialog, restoreNote, handleOpenDialog };
+	return { notes, count, currentPage, dialog, state, restoreNote, handleOpenDialog };
 };

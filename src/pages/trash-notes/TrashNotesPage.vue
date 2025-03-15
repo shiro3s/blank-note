@@ -3,14 +3,24 @@ import { useTrashNotesPage } from "./useTrashNotesPage";
 import NoteCard from "@/components/feature/note-card/NoteCard.vue";
 import NoteCardMenus from "@/components/feature/note-card-menu/NoteCardMenus.vue";
 import VConfirmDialog from "@/components/common/confirm-dialog/VConfirmDialog.vue";
+import Empty from "./Empty.vue";
 
-const { notes, count, currentPage, dialog, restoreNote, handleOpenDialog } =
+const { notes, count, currentPage, dialog, state, restoreNote, handleOpenDialog } =
 	useTrashNotesPage();
 </script>
 
 <template>
-  <div class="trash-note-page">
-    <div class="trash-note-page__items">
+  <div v-if="state.loading"></div>
+
+  <div class="trash-note-page" v-else>
+    <Empty 
+      v-if="count === 0" 
+    />
+
+    <div 
+      v-else
+      class="trash-note-page__items" 
+    >
       <NoteCard 
         v-for="note in notes" 
         :key="note.id"

@@ -59,7 +59,7 @@ defineExpose({
     <div class="note-editor__sticky-top">
       <div class="note-editor__sticky-content">
         <VSwitch label="Preview" v-model="preview" />
-        <VBtn :disabled="isSubmitting">{{ label }}</VBtn>
+        <VBtn :disabled="isSubmitting" theme="success">{{ label }}</VBtn>
       </div>
     </div>
   </form>
