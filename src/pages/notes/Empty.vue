@@ -1,11 +1,14 @@
 <script setup lang="ts">
+import VAnchorBtn from "@/components/common/anchor-btn/VAnchorBtn.vue"
 </script>
 
 <template>
   <div class="notes-empty">
     <h1 class="notes-empty__head">No items</h1>
 
-    <p class="notes-empty__msg">Only items delete from 'Notes' show here</p>
+    <p class="notes-empty__msg">Let's create first 'Note'</p>
+
+    <VAnchorBtn theme="success" href="/notes/new">Create note</VAnchorBtn>
   </div>
 </template>
 
@@ -24,5 +27,6 @@
 
 .notes-empty__msg {
   color: #303133;
+  margin-bottom: 30px;
 }
 </style>

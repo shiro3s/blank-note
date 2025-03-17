@@ -3,13 +3,18 @@ import { useNotesPage } from "./useNotesPage";
 import NoteCard from "@/components/feature/note-card/NoteCard.vue";
 import NoteCardMenus from "@/components/feature/note-card-menu/NoteCardMenus.vue";
 import VPagination from "@/components/common/pagination/VPagination.vue";
+import Empty from "./Empty.vue"
 
-const { notes, count, currentPage, handleTrash } = useNotesPage();
+const { notes, count, currentPage, state, handleTrash } = useNotesPage();
 </script>
 
 <template>
-  <div class="note-page">
-    <div class="note-page__items">
+  <div v-if="state.loading"></div>
+
+  <div class="note-page" v-else>
+    <Empty v-if="count === 0" />
+
+    <div class="note-page__items" v-else>
       <NoteCard 
         v-for="note in notes" 
         :key="note.id"
