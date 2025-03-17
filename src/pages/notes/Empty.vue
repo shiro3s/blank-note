@@ -1,6 +1,4 @@
-<script setup lang="ts">
-import VAnchorBtn from "@/components/common/anchor-btn/VAnchorBtn.vue"
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="notes-empty">
@@ -8,7 +6,9 @@ import VAnchorBtn from "@/components/common/anchor-btn/VAnchorBtn.vue"
 
     <p class="notes-empty__msg">Let's create first 'Note'</p>
 
-    <VAnchorBtn theme="success" href="/notes/new">Create note</VAnchorBtn>
+    <div class="notes-empty__img">
+      <img src="/undraw_notes.svg" />
+    </div>
   </div>
 </template>
 
@@ -27,6 +27,15 @@ import VAnchorBtn from "@/components/common/anchor-btn/VAnchorBtn.vue"
 
 .notes-empty__msg {
   color: #303133;
-  margin-bottom: 30px;
+}
+
+.notes-empty__img {
+  margin: 30px 0;
+}
+
+.notes-empty__img img {
+  width: 100%;
+  max-width: 816px;
+  aspect-ratio: 16 / 9;
 }
 </style>

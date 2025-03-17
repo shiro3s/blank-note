@@ -91,6 +91,7 @@ const { compileMarkdown, containerElmRef } = useMarkdown(props);
 }
 
 .v-markdown :deep(.code-block) {
+  margin-top: 30px;
   margin-bottom: 16px;
 }
 
@@ -124,6 +125,11 @@ const { compileMarkdown, containerElmRef } = useMarkdown(props);
 
 .v-markdown :deep(.code-block__content) {
   position: relative;
+  margin-top: 30px;
+}
+
+.v-markdown :deep(.code-block:has(.code-block__content) .code-block__content) {
+  margin-top: 0;
 }
 
 .v-markdown :deep(.copy) {
@@ -219,10 +225,6 @@ const { compileMarkdown, containerElmRef } = useMarkdown(props);
   filter: blur(3px);
   transition: filter 0.35s, opacity 0.35s;
 }
-
-/* .v-markdown :deep(.code-block__content:has(.has-focused):hover .line:not(.focused)) {
-  filter: blur(0);
-} */
 
 .v-markdown :deep(hr) {
   margin: 30px 0;
