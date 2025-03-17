@@ -2,8 +2,9 @@
 import NoteEmpty from "@/components/feature/note-empty/NoteEmpty.vue";
 import NoteEditor from "@/components/feature/note-editor/NoteEditor.vue";
 import { useEditNotePage } from "./useEditNotePage";
+import VAlertDialog from "@/components/common/alert-dialog/VAlertDialog.vue";
 
-const { handleSubmit, state, note } = useEditNotePage();
+const { handleSubmit, state, note, dialog } = useEditNotePage();
 </script>
 
 <template>
@@ -19,6 +20,7 @@ const { handleSubmit, state, note } = useEditNotePage();
       :content="note?.content"
       @submit="handleSubmit"
     />
+    <VAlertDialog ref="dialog" />
   </div>
 
 </template>

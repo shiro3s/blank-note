@@ -1,9 +1,11 @@
 import { inject, onMounted, reactive, ref } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { PgInjectKey } from "@/composables/usePgClient";
-import { insertNote } from "@/constants/sql";
 import { now } from "@/utils/date";
-import { ulid } from "ulidx";
+
+import { STORAGE_CAPACITY } from "@/constants/bite";
+import { toMegaBite } from "@/utils/bite";
+import { getBite } from "@/utils/string";
 
 import type { NoteValue } from "@/components/feature/note-editor/useNoteEditor";
 import type { Note } from "@/types/apps";
@@ -15,9 +17,18 @@ type LocationParams = {
 export const useEditNotePage = () => {
 	const state = reactive({
 		loading: true,
-		error: false
-	})
-	const note = ref<Note>()
+		error: false,
+	});
+
+	const dialog = ref<{
+		openDialog: ({
+			title,
+			message,
+		}: { title?: string; message?: string }) => void;
+		closeDialog: () => void;
+	}>();
+
+	const note = ref<Note>();
 	const pg = inject(PgInjectKey);
 	const route: {
 		params: LocationParams;
@@ -25,7 +36,25 @@ export const useEditNotePage = () => {
 	const router = useRouter();
 
 	const handleSubmit = async (value: NoteValue) => {
-		await pg?.query(insertNote, [ulid(), value.title, value.content, now()]);
+		const estimate = await navigator.storage.estimate();
+		const usage = toMegaBite(estimate.usage);
+
+		const writeBite = getBite(value.title) + getBite(value.content);
+		const writeMegaBite = toMegaBite(writeBite);
+
+		if (usage + writeMegaBite > STORAGE_CAPACITY.MAX.MEGA) {
+			dialog.value?.openDialog({
+				title: "Not enough free storage space.",
+				message:
+					"Could not update note.<br />Please increase free space and try again.",
+			});
+			return;
+		}
+
+		await pg?.query(
+			"UPDATE t_notes SET title = $1, content = $2, updatedAt = $3 WHERE id = $4",
+			[value.title, value.content, now(), note.value?.id],
+		);
 		router.push("/notes");
 	};
 
@@ -36,12 +65,12 @@ export const useEditNotePage = () => {
 		);
 
 		if (ret?.rows.length) {
-			note.value = ret.rows[0]
+			note.value = ret.rows[0];
 		} else {
-			state.error = true
+			state.error = true;
 		}
-		state.loading = false
+		state.loading = false;
 	});
 
-	return { handleSubmit, note, state };
+	return { handleSubmit, note, state, dialog };
 };

@@ -47,32 +47,32 @@ const { compileMarkdown, containerElmRef } = useMarkdown(props);
 
 .v-markdown :deep(h1) {
   margin: 20px 0 10px;
-  font-size: 36px;
+  font-size: 1.6em;
 }
 
 .v-markdown :deep(h2) {
   margin-top: 20px 0 10px;
-  font-size: 30px;
+  font-size: 1.4em;
 }
 
 .v-markdown :deep(h3) {
   margin: 20px 0 10px;
-  font-size: 24px;
+  font-size: 1.2em;
 }
 
 .v-markdown :deep(h4) {
   margin: 10px 0;
-  font-size: 18px;
+  font-size: 1.1em;
 }
 
 .v-markdown :deep(h5) {
   margin: 10px 0;
-  font-size: 14px;
+  font-size: 1em;
 }
 
 .v-markdown :deep(h6) {
   margin: 10px 0;
-  font-size: 12px;
+  font-size: 0.85em;
 }
 
 .v-markdown :deep(p) {
@@ -184,6 +184,28 @@ const { compileMarkdown, containerElmRef } = useMarkdown(props);
 
 .v-markdown :deep(pre code span) {
   color: unset;
+}
+
+.v-markdown :deep(pre code span:is(.diff.remove)) {
+  background-color: rgba(229, 83, 75, 0.2);
+  width: 100%;
+  display: inline-block;
+}
+
+.v-markdown :deep(pre code span:is(.diff.add)) {
+  background-color: rgba(70, 149, 74, 0.2);
+  width: 100%;
+  display: inline-block;
+}
+
+.v-markdown :deep(.has-focused .line:not(.focused)) {
+  opacity: 0.9;
+  filter: blur(3px);
+  transition: filter 0.35s, opacity 0.35s;
+}
+
+.v-markdown :deep(.code-block__content:has(.has-focused):hover .line:not(.focused)) {
+  filter: blur(0);
 }
 
 .v-markdown :deep(hr) {
