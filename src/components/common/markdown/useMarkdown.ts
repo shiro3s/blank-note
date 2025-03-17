@@ -5,10 +5,11 @@ import mdItMark from "markdown-it-mark";
 import mdItFootnote from "markdown-it-footnote";
 import mdItAttrs from "markdown-it-attrs";
 import mdItAsync from "markdown-it-async";
+import { toJpeg } from "html-to-image";
 
 import { container } from "./container";
 import { link } from "./link";
-import {fence} from "./fence";
+import { fence } from "./fence";
 import { customHighlight } from "./highlight";
 
 export interface Props {
@@ -50,7 +51,7 @@ export const useMarkdown = (props: Props) => {
 		const el = event.target as HTMLElement;
 		const timeoutIdMap: WeakMap<HTMLElement, number> = new WeakMap();
 
-		if (el.matches("button[class='code-block__clipboard-btn']")) {
+		if (el.matches("button[class='copy']")) {
 			const textContent =
 				el.parentElement?.querySelector("pre")?.textContent || "";
 			const text = textContent.replace(/^ *(\$|>) /gm, "").trim();
@@ -62,6 +63,19 @@ export const useMarkdown = (props: Props) => {
 					el.classList.remove("copied");
 				}, 2000);
 				timeoutIdMap.set(el, timeoutId);
+			});
+			return;
+		}
+
+		if (el.matches("button[class='download']")) {
+			const pre = el.parentElement?.querySelector("pre");
+			if (!pre) return;
+
+			toJpeg(pre).then((dataUrl) => {
+				const a = document.createElement("a");
+				a.href = dataUrl;
+				a.download = "code.jpg";
+				a.click();
 			});
 		}
 	};

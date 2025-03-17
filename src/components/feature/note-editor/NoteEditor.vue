@@ -89,7 +89,6 @@ defineExpose({
   box-sizing: border-box;
   border: 1px solid #ddd;
   border-radius: 12px;
-  min-height: 1056px;
 }
 
 .note-editor__divide {

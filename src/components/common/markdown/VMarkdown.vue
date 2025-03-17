@@ -126,13 +126,13 @@ const { compileMarkdown, containerElmRef } = useMarkdown(props);
   position: relative;
 }
 
-.v-markdown :deep(.code-block__clipboard-btn) {
+.v-markdown :deep(.copy) {
   display: flex;
   align-items: center;
   position: absolute;
   gap: 5px;
   top: 0;
-  right: 0;
+  right: 36px;
   outline: none;
   border: none;
   box-sizing: border-box;
@@ -143,18 +143,34 @@ const { compileMarkdown, containerElmRef } = useMarkdown(props);
   transition: opacity 0.6s ease;
 }
 
-.v-markdown :deep(.code-block__clipboard-btn:is(.copied)) {
+.v-markdown :deep(.download) {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+  opacity: 0;
+  cursor: pointer;
+  background-color: #353531;
+  transition: opacity 0.6s ease;
+}
+
+.v-markdown :deep(.copy:is(.copied)) {
   opacity: 1
 }
 
-.v-markdown :deep(.code-block__clipboard-btn:is(.copied)::before) {
+.v-markdown :deep(.copy:is(.copied)::before) {
   content: "copied!";
   font-size: 12px;
   font-weight: 500;
   color: #fff;
 }
 
-.v-markdown :deep(.code-block__content:hover .code-block__clipboard-btn) {
+.v-markdown :deep(.code-block__content:hover .copy),
+.v-markdown :deep(.code-block__content:hover .download) {
   opacity: 1;
 }
 
@@ -204,9 +220,9 @@ const { compileMarkdown, containerElmRef } = useMarkdown(props);
   transition: filter 0.35s, opacity 0.35s;
 }
 
-.v-markdown :deep(.code-block__content:has(.has-focused):hover .line:not(.focused)) {
+/* .v-markdown :deep(.code-block__content:has(.has-focused):hover .line:not(.focused)) {
   filter: blur(0);
-}
+} */
 
 .v-markdown :deep(hr) {
   margin: 30px 0;

@@ -37,7 +37,10 @@ defineProps<Props>()
   box-sizing: border-box;
   border: 1px solid #ddd;
   border-radius: 12px;
-  min-height: 1056px;
+}
+
+.note-detail__head {
+  margin-bottom: 14px;
 }
 
 .note-detail__date {
