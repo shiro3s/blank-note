@@ -20,7 +20,6 @@ const { compileMarkdown, containerElmRef } = useMarkdown(props);
 .v-markdown {
   padding: 16px 0;
   box-sizing: border-box;
-  min-height: 65svh;
 }
 
 .v-markdown :deep(*) {
@@ -47,32 +46,32 @@ const { compileMarkdown, containerElmRef } = useMarkdown(props);
 
 .v-markdown :deep(h1) {
   margin: 20px 0 10px;
-  font-size: 1.6em;
+  font-size: 28px;
 }
 
 .v-markdown :deep(h2) {
   margin-top: 20px 0 10px;
-  font-size: 1.4em;
+  font-size: 24px;
 }
 
 .v-markdown :deep(h3) {
   margin: 20px 0 10px;
-  font-size: 1.2em;
+  font-size: 20px;
 }
 
 .v-markdown :deep(h4) {
   margin: 10px 0;
-  font-size: 1.1em;
+  font-size: 16px;
 }
 
 .v-markdown :deep(h5) {
   margin: 10px 0;
-  font-size: 1em;
+  font-size: 14px;
 }
 
 .v-markdown :deep(h6) {
   margin: 10px 0;
-  font-size: 0.85em;
+  font-size: 12px;
 }
 
 .v-markdown :deep(p) {
@@ -125,11 +124,11 @@ const { compileMarkdown, containerElmRef } = useMarkdown(props);
 
 .v-markdown :deep(.code-block__content) {
   position: relative;
-  margin-top: 30px;
+  margin-bottom: 10px;
 }
 
 .v-markdown :deep(.code-block:has(.code-block__content) .code-block__content) {
-  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .v-markdown :deep(.copy) {
@@ -306,6 +305,7 @@ const { compileMarkdown, containerElmRef } = useMarkdown(props);
 
 .v-markdown :deep(.custom-block-title) {
   font-weight: 600;
+  color: #606266;
 }
 
 .v-markdown :deep(.custom-block:is(.info)) {
@@ -328,9 +328,13 @@ const { compileMarkdown, containerElmRef } = useMarkdown(props);
   background-color: #8e96aa24;
 }
 
-.v-markdown :deep(.custom-block:is(.details) summary) {
+.v-markdown :deep(.custom-block:is(.details)[open] summary) {
   margin-bottom: 10px;
+}
+
+.v-markdown :deep(.custom-block:is(.details) summary) {
   font-weight: 700;
+  cursor: pointer;
 }
 
 .v-markdown :deep(.embed-block) {

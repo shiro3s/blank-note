@@ -21,5 +21,10 @@ export const menus: Menu[] = [
 		path: "/notes/trash",
 		icon: "Trash",
 		name: "Trash"
+	},
+	{
+		path: "/notes/guide",
+		icon: "Help",
+		name: "How to write"
 	}
 ];

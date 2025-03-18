@@ -27,6 +27,10 @@ export const routes: RouteRecordRaw[] = [
 				component: () => import("@/pages/trash-notes/TrashNotesPage.vue")
 			},
 			{
+				path: "guide",
+				component: () => import("@/pages/guide/GuidePage.vue")
+			},
+			{
 				path: ":id",
 				component: () => import("@/pages/note/NotePage.vue"),
 				strict: true

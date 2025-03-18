@@ -9,6 +9,8 @@ const dynamicIcon = defineAsyncComponent(() => {
 			return import("./Add.vue");
 		case "Copy":
 			return import("./Copy.vue");
+		case "Help":
+			return import("./Help.vue");
 		case "List":
 			return import("./List.vue");
 		case "MoreVert":

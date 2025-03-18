@@ -37,6 +37,7 @@ defineProps<Props>()
   box-sizing: border-box;
   border: 1px solid #ddd;
   border-radius: 12px;
+  min-height: 80svh;
 }
 
 .note-detail__head {
@@ -51,7 +52,7 @@ defineProps<Props>()
 }
 
 .note-detail__title {
-  font-size: 24px;
+  font-size: 32px;
   margin: 0;
   color: #606266;
   text-align: center;
