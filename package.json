@@ -2,7 +2,8 @@
   "name": "proto-note",
   "version": "1.0.0",
   "scripts": {
-    "start": "vite"
+    "start": "vite",
+    "build": "vite build"
   },
   "dependencies": {
     "@codemirror/commands": "^6.8.0",
@@ -27,7 +28,6 @@
     "markdown-it-sub": "^2.0.0",
     "markdown-it-sup": "^2.0.0",
     "normalize.css": "^8.0.1",
-    "pinia": "^3.0.1",
     "shiki": "^3.1.0",
     "ulidx": "^2.4.1",
     "valibot": "^1.0.0-rc.3",

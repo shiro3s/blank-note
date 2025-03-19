@@ -1,19 +1,14 @@
 import { type InjectionKey, onMounted } from "vue";
-import { PGliteWorker } from "@electric-sql/pglite/worker";
+import { pgClient } from "./pg";
 import { createTable, insertSetting } from "@/constants/sql";
 import type { Setting } from "@/types/apps";
 
 export const usePgClient = () => {
-	const pg = new PGliteWorker(
-		new Worker(new URL("./pglite-worker.ts", import.meta.url), {
-			type: "module",
-		}),
-	);
-
+	const pg = pgClient;
 	onMounted(async () => {
 		await pg.exec(createTable);
 		const ret = await pg.query<Setting>("SELECT * from m_settings");
-		
+
 		if (ret.rows.length === 0) {
 			Promise.all([
 				await pg.query(insertSetting, [1, "started", "false"]),
