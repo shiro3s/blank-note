@@ -7,9 +7,13 @@ export const strToNum = (str?: string) => {
 	return num;
 };
 
-export const getBite = (str?: string) => {
-	if (!str) return 0;
+export const strToBool = (str?: string) => {
+	switch (str) {
+		case "true":
+			return true
+		case "false":
+			return false
+	}
 
-	const blob = new Blob([str], { type: "text/plain" });
-	return blob.size;
-};
+	return false
+}

@@ -5,7 +5,6 @@ import NoteEmpty from "@/components/feature/note-empty/NoteEmpty.vue"
 import NoteDetail from "@/components/feature/note-detail/NoteDetail.vue";
 
 const { note, state } = useNotePage();
-console.log(note.value?.content);
 </script>
 
 <template>

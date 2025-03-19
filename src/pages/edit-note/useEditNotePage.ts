@@ -4,8 +4,7 @@ import { PgInjectKey } from "@/composables/usePgClient";
 import { now } from "@/utils/date";
 
 import { STORAGE_CAPACITY } from "@/constants/bite";
-import { toMegaBite } from "@/utils/bite";
-import { getBite } from "@/utils/string";
+import { toMegaBite, getBite } from "@/utils/bite";
 
 import type { NoteValue } from "@/components/feature/note-editor/useNoteEditor";
 import type { Note } from "@/types/apps";

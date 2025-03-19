@@ -6,8 +6,7 @@ import {STORAGE_CAPACITY} from "@/constants/bite"
 import { ulid } from "ulidx";
 
 import type { NoteValue } from "@/components/feature/note-editor/useNoteEditor";
-import { toMegaBite } from "@/utils/bite";
-import {getBite} from "@/utils/string"
+import { toMegaBite, getBite } from "@/utils/bite";
 import { now } from "@/utils/date";
 
 

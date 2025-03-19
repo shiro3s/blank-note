@@ -1,14 +1,8 @@
-import { PGlite } from "@electric-sql/pglite";
 import { worker } from "@electric-sql/pglite/worker";
-import { live } from "@electric-sql/pglite/live";
+import { pgClient } from "./pg";
 
 worker({
 	async init() {
-		return new PGlite("idb://proto-note", {
-			relaxedDurability: true,
-			extensions: {
-				live,
-			},
-		});
+		return pgClient;
 	},
 });

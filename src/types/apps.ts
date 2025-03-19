@@ -6,3 +6,9 @@ export interface Note {
   createdat: string;
   updatedat: string;
 }
+
+export interface Setting {
+  id: number;
+  key: string;
+  value: string
+}
