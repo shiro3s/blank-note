@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { menus } from "./menus";
 import ColumnLayoutSidebarMenu from "./ColumnLayoutSidebarMenu.vue";
-import CalumnLayoutCapacity from "./CalumnLayoutCapacity.vue";
+// import CalumnLayoutCapacity from "./CalumnLayoutCapacity.vue";
 </script>
 
 <template>
@@ -12,7 +12,7 @@ import CalumnLayoutCapacity from "./CalumnLayoutCapacity.vue";
       </li>
     </ul>
 
-    <CalumnLayoutCapacity />
+    <!-- <CalumnLayoutCapacity /> -->
   </aside>
 </template>
 

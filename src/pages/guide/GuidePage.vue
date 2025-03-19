@@ -7,7 +7,7 @@ import { CUSTOM_CONTAINER, FOCUS_CODE, DIFF_CODE } from "./guide";
 <template>
   <div class="guide-page">
     <h1 class="head1">How to write</h1>
-    <p class="paragraph">'Proto Notes' comes with built in Markdown Extensions.</p>
+    <p class="paragraph">'Blank' comes with built in Markdown Extensions.</p>
 
     <h2 class="head2">Custom Containers</h2>
     <p class="paragraph">Custom containers can be defined by their types, titles, and contents.</p>

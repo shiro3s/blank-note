@@ -1,12 +1,15 @@
+# path
 
 | / | home |
-| /note | Note一覧 |
-| /note/new | Note作成 |
-| /note/trash | Note削除一覧 |
-| /note/edit/:id | Note編集 |
-| /note/:id | Note詳細 |
-| /note/help | Help |
+| /notes | Note一覧 |
+| /notes/new | Note作成 |
+| /notes/trash | Note削除一覧 |
+| /notes/edit/:id | Note編集 |
+| /notes/:id | Note詳細 |
+| /notes/guide | 書き方 |
 
+# TODO
 
-1136
-820
+- デザイントークンの設定・置き換え
+- home画面
+- markdownのスタイルを Vitepress に近づける
