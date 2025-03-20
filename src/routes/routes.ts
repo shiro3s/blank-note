@@ -1,4 +1,15 @@
 import type { RouteRecordRaw } from "vue-router";
+
+import HomePage from "@/pages/home/HomePage.vue"
+import ColumnLayout from "@/layouts/column-layout/ColumnLayout.vue";
+import NotesPage from "@/pages/notes/NotesPage.vue";
+import NewNotePage from "@/pages/new-note/NewNotePage.vue";
+import EditNotePage from "@/pages/edit-note/EditNotePage.vue"
+import TrashNotesPage from "@/pages/trash-notes/TrashNotesPage.vue"
+import GuidePage from "@/pages/guide/GuidePage.vue"
+import NotePage from "@/pages/note/NotePage.vue"
+import NotFoundPage from "@/pages/not-found/NotFoundPage.vue"
+
 import { strToBool } from "@/utils/string";
 import { pgClient } from "@/composables/pg";
 
@@ -6,7 +17,7 @@ export const routes: RouteRecordRaw[] = [
 	{
 		path: "/",
 		name: "Home",
-		component: () => import("@/pages/home/HomePage.vue"),
+		component: HomePage,
 		beforeEnter: async (to, from, next) => {
 			try {
 				const ret = await pgClient.query<{ value: string }>(
@@ -25,31 +36,31 @@ export const routes: RouteRecordRaw[] = [
 	},
 	{
 		path: "/notes",
-		component: () => import("@/layouts/column-layout/ColumnLayout.vue"),
+		component: ColumnLayout,
 		children: [
 			{
 				path: "",
-				component: () => import("@/pages/notes/NotesPage.vue"),
+				component: NotesPage,
 			},
 			{
 				path: "new",
-				component: () => import("@/pages/new-note/NewNotePage.vue"),
+				component: NewNotePage,
 			},
 			{
 				path: "edit/:id",
-				component: () => import("@/pages/edit-note/EditNotePage.vue"),
+				component: EditNotePage,
 			},
 			{
 				path: "trash",
-				component: () => import("@/pages/trash-notes/TrashNotesPage.vue"),
+				component: TrashNotesPage,
 			},
 			{
 				path: "guide",
-				component: () => import("@/pages/guide/GuidePage.vue"),
+				component: GuidePage,
 			},
 			{
 				path: ":id",
-				component: () => import("@/pages/note/NotePage.vue"),
+				component: NotePage,
 				strict: true,
 			},
 		],
@@ -57,6 +68,6 @@ export const routes: RouteRecordRaw[] = [
 	{
 		path: "/:anymatch(.*)",
 		name: "NotFound",
-		component: () => import("@/pages/not-found/NotFoundPage.vue"),
+		component: NotFoundPage,
 	},
 ];
